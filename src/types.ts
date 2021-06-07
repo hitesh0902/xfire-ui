@@ -13,3 +13,5 @@ export interface RootState {
 export interface ExampleState {
   id: number;
 }
+
+export type ButtonVariants = 'primary' | 'secondary';

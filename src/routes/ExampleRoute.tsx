@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../types';
 import { changeNumber, changeNumberAsync } from '../slice/ExampleSlice';
+import XFButton from '../components/Core/XFButton';
 
 interface ExampleRouteProps {}
 
@@ -13,30 +14,30 @@ const ExampleRoute: React.FC<ExampleRouteProps> = () => {
     <div>
       <p>Hello</p>
       <p>Current ID = {id}</p>
-      <button
-        className='border border-gray-500 mx-2 w-[200px]'
+      <XFButton
+        variant='primary'
         onClick={() => dispatch(changeNumber(id + 1))}
       >
         Add
-      </button>
-      <button
-        className='border border-gray-500 mx-2'
+      </XFButton>
+      <XFButton
+        variant='secondary'
         onClick={() => dispatch(changeNumber(id - 1))}
       >
         Subtract
-      </button>
-      <button
-        className='border border-gray-500 mx-2'
+      </XFButton>
+      <XFButton
+        variant='primary'
         onClick={() => dispatch(changeNumberAsync(id + 1))}
       >
         Add
-      </button>
-      <button
-        className='border border-gray-500 mx-2'
+      </XFButton>
+      <XFButton
+        variant='secondary'
         onClick={() => dispatch(changeNumberAsync(id - 1))}
       >
         Subtract
-      </button>
+      </XFButton>
     </div>
   );
 };
