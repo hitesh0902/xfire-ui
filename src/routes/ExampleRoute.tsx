@@ -1,18 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../types';
 import { changeNumber, changeNumberAsync } from '../slice/ExampleSlice';
 import XFButton from '../components/Core/XFButton';
+import XFTextField from '../components/Core/XFTextField';
+import XFRadioButton from '../components/Core/XFRadioButton';
 
 interface ExampleRouteProps {}
 
 const ExampleRoute: React.FC<ExampleRouteProps> = () => {
+  const [name, setName] = useState('');
+
   const dispatch = useDispatch();
   const id = useSelector((state: RootState) => state.example.id);
+
+  const setNameEvent = (event: any) => {
+    setName(event.target.value);
+  };
 
   return (
     <div>
       <p>Hello</p>
+      <p>My name is {name}</p>
       <p>Current ID = {id}</p>
       <XFButton
         variant='primary'
@@ -38,6 +47,15 @@ const ExampleRoute: React.FC<ExampleRouteProps> = () => {
       >
         Subtract
       </XFButton>
+      <XFTextField
+        label='name'
+        placeHolder='Enter your name'
+        onChange={setNameEvent}
+      />
+      <XFRadioButton
+        groupName='sports'
+        values={['football', 'basketball', 'cricket', 'volleyball']}
+      />
     </div>
   );
 };
