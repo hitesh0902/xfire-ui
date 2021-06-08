@@ -20,10 +20,10 @@ const XFCheckbox: React.FC<XFCheckboxProps> = ({
           <input
             type='checkbox'
             value={option.value}
-            onChange={onChange}
+            onChange={(e) => onChange(e)}
             disabled={option.disabled}
           />
-          <label>{option.label}</label>
+          <label className='ml-1'>{option.label}</label>
         </div>
       ))}
     </div>

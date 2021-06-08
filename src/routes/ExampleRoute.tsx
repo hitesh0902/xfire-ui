@@ -69,13 +69,13 @@ const ExampleRoute: React.FC<ExampleRouteProps> = () => {
       />
       <XFCheckbox
         options={[
-          { label: 'Label1', value: 'value1' },
-          { label: 'Label2', value: 'value2' },
-          { label: 'Label3', value: 'value3' },
-          { label: 'Label4', value: 'value4', disabled: true },
+          { label: 'Label1', value: 'One' },
+          { label: 'Label2', value: 'Two' },
+          { label: 'Label3', value: 'Three' },
+          { label: 'Label4', value: 'Four', disabled: true },
         ]}
         onChange={(e) => {
-          console.log(e.target.value, e.target.checked);
+          console.log(e.target.value + ' ' + e.target.checked);
         }}
       />
       <XFTextField
