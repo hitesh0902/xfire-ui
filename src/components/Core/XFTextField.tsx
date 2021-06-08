@@ -3,7 +3,7 @@ import React from 'react';
 interface XFTextFieldProps {
   label?: string;
   placeHolder?: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange(e: React.ChangeEvent<HTMLInputElement>): void;
   disabled?: boolean;
 }
 

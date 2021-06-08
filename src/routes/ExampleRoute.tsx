@@ -9,7 +9,9 @@ import XFRadioButton from '../components/Core/XFRadioButton';
 interface ExampleRouteProps {}
 
 const ExampleRoute: React.FC<ExampleRouteProps> = () => {
-  const [name, setName] = useState('');
+  const [name, setName] = useState('No Name');
+
+  const [sport, setSport] = useState('Nothing');
 
   const dispatch = useDispatch();
   const id = useSelector((state: RootState) => state.example.id);
@@ -18,10 +20,15 @@ const ExampleRoute: React.FC<ExampleRouteProps> = () => {
     setName(event.target.value);
   };
 
+  const sportsSelected = (event: any) => {
+    setSport(event.target.value);
+  };
+
   return (
     <div>
       <p>Hello</p>
       <p>My name is {name}</p>
+      <p>My Fav sport is {sport}</p>
       <p>Current ID = {id}</p>
       <XFButton
         variant='primary'
@@ -55,6 +62,7 @@ const ExampleRoute: React.FC<ExampleRouteProps> = () => {
       <XFRadioButton
         groupName='sports'
         values={['football', 'basketball', 'cricket', 'volleyball']}
+        onChange={sportsSelected}
       />
     </div>
   );
