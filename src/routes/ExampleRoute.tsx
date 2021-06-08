@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../types';
 import { changeNumber, changeNumberAsync } from '../slice/ExampleSlice';
 import XFButton from '../components/Core/XFButton';
+import XFSelectField from '../components/Core/XFSelectField';
+import XFCheckbox from '../components/Core/XFCheckbox';
 import XFTextField from '../components/Core/XFTextField';
 import XFRadioButton from '../components/Core/XFRadioButton';
 
@@ -54,6 +56,28 @@ const ExampleRoute: React.FC<ExampleRouteProps> = () => {
       >
         Subtract
       </XFButton>
+      <XFSelectField
+        options={[
+          { label: 'Label1', value: 'value1' },
+          { label: 'Label2', value: 'value2' },
+          { label: 'Label3', value: 'value3' },
+          { label: 'Label4', value: 'value4', disabled: true },
+        ]}
+        onChange={(e) => {
+          console.log(e.target.value);
+        }}
+      />
+      <XFCheckbox
+        options={[
+          { label: 'Label1', value: 'One' },
+          { label: 'Label2', value: 'Two' },
+          { label: 'Label3', value: 'Three' },
+          { label: 'Label4', value: 'Four', disabled: true },
+        ]}
+        onChange={(e) => {
+          console.log(e.target.value + ' ' + e.target.checked);
+        }}
+      />
       <XFTextField
         label='name'
         placeHolder='Enter your name'

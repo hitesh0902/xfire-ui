@@ -15,3 +15,9 @@ export interface ExampleState {
 }
 
 export type ButtonVariants = 'primary' | 'secondary';
+
+export interface IOptions {
+  label: string;
+  value: string;
+  disabled?: boolean;
+}
