@@ -22,7 +22,7 @@ const XFButton: React.FC<XFButtonProps> = ({
   return (
     <button
       className={classNames(
-        'border border-gray-500 p-2',
+        'border border-gray-500 p-2 block',
         variantClassMap[variant],
       )}
       onClick={onClick}
