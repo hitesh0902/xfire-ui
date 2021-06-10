@@ -2,11 +2,14 @@ import React from 'react';
 import classNames from 'classnames';
 import { ButtonVariants } from '../../types';
 
+type ButtonType = 'submit' | 'reset' | 'button';
+
 interface XFButtonProps {
   children: string;
   variant?: ButtonVariants;
   onClick?: () => void;
   disabled?: boolean;
+  type?: ButtonType;
 }
 
 const XFButton: React.FC<XFButtonProps> = ({
