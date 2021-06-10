@@ -8,7 +8,7 @@ import Error404Route from './routes/Error404Route';
 
 const App: React.FC = () => {
   return (
-    <div>
+    <div className='h-screen'>
       <BrowserRouter>
         <Switch>
           <Route exact path='/' component={ExampleRoute} />
