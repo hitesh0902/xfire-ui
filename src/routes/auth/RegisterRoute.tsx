@@ -33,7 +33,17 @@ const RegisterRoute = () => {
         <h1 className='text-4xl mb-3'>X-Fire Register</h1>
         <div>
           <XFTextField
-            placeHolder='Enter your name'
+            placeHolder='Enter your First Name'
+            type='text'
+            onChange={(e) => setName(e.target.value)}
+          />
+          <XFTextField
+            placeHolder='Enter your Last Name'
+            type='text'
+            onChange={(e) => setName(e.target.value)}
+          />
+          <XFTextField
+            placeHolder='Enter your Alias'
             type='text'
             onChange={(e) => setName(e.target.value)}
           />
