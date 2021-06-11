@@ -7,16 +7,29 @@ import XFButton from '../../components/Core/XFButton';
 const RegisterRoute = () => {
   const history = useHistory();
 
-  const [name, setName] = useState('');
-  const [userId, setUserId] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [alias, setAlias] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [error, setError] = useState('');
 
-  const handleSubmit = () => {
-    console.log(name, userId, password);
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setError('');
+
+    if (password !== confirmPassword) {
+      setError('passwords do not match');
+      return;
+    }
     axios
       .post('https://localhost:44362/api/Auth/register', {
-        id: userId,
-        password: password,
+        id: email,
+        firstName,
+        lastName,
+        alias,
+        password,
       })
       .then((res) => {
         console.log(res.data);
@@ -33,28 +46,33 @@ const RegisterRoute = () => {
         <h1 className='text-4xl mb-3'>X-Fire Register</h1>
         <div>
           <XFTextField
-            placeHolder='Enter your First Name'
+            placeHolder='Enter your first name'
             type='text'
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) => setFirstName(e.target.value)}
           />
           <XFTextField
-            placeHolder='Enter your Last Name'
+            placeHolder='Enter your last name'
             type='text'
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) => setLastName(e.target.value)}
           />
           <XFTextField
-            placeHolder='Enter your Alias'
+            placeHolder='Enter your alias'
             type='text'
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) => setAlias(e.target.value)}
           />
           <XFTextField
-            placeHolder='Enter your user-id or email-id'
-            onChange={(e) => setUserId(e.target.value)}
+            placeHolder='Enter your email address'
+            onChange={(e) => setEmail(e.target.value)}
           />
           <XFTextField
             placeHolder='Enter your password'
             type='password'
             onChange={(e) => setPassword(e.target.value)}
+          />
+          <XFTextField
+            placeHolder='Re-enter your password'
+            type='password'
+            onChange={(e) => setConfirmPassword(e.target.value)}
           />
         </div>
         <div className='flex justify-center my-3'>
@@ -66,6 +84,7 @@ const RegisterRoute = () => {
             Go to Login
           </XFButton>
         </div>
+        {error && <p className='text-red-500 text-center mt-2'>{error}</p>}
       </div>
     </form>
   );
