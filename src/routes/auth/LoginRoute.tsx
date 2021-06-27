@@ -11,11 +11,10 @@ const LoginRoute = () => {
   let [password, setPassword] = useState('');
 
   const logMeIn = () => {
-    console.log(userId, password);
     axios
       .post('https://localhost:44362/api/Auth/login', {
-        id: userId,
-        password: password,
+        LoginId: userId,
+        Password: password,
       })
       .then((res) => {
         console.log(res.data);
