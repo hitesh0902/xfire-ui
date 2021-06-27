@@ -24,12 +24,12 @@ const RegisterRoute = () => {
       return;
     }
     axios
-      .post('https://localhost:44362/api/Auth/register', {
-        id: email,
-        firstName,
-        lastName,
-        alias,
-        password,
+      .post('https://localhost:44362/api/Auth/registerUser', {
+        UserAlias: alias,
+        UserEmailId: email,
+        UserFirstName: firstName,
+        UserLastName: lastName,
+        UserPassword: password,
       })
       .then((res) => {
         console.log(res.data);
