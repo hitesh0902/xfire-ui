@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useForm } from 'react-hook-form';
 import { RootState } from '../types';
 import { changeNumber, changeNumberAsync } from '../slice/ExampleSlice';
 import XFButton from '../components/Core/XFButton';
@@ -7,10 +8,20 @@ import XFSelectField from '../components/Core/XFSelectField';
 import XFCheckbox from '../components/Core/XFCheckbox';
 import XFTextField from '../components/Core/XFTextField';
 import XFRadioButton from '../components/Core/XFRadioButton';
+import XFControlledTextField from '../components/Core/XFControlledTextField';
 
 interface ExampleRouteProps {}
 
 const ExampleRoute: React.FC<ExampleRouteProps> = () => {
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    mode: 'onBlur',
+    reValidateMode: 'onBlur',
+  });
+
   const [name, setName] = useState('No Name');
 
   const [sport, setSport] = useState('Nothing');
@@ -25,6 +36,10 @@ const ExampleRoute: React.FC<ExampleRouteProps> = () => {
   const sportsSelected = (event: any) => {
     setSport(event.target.value);
   };
+
+  const onSubmit = handleSubmit((data) => console.log('[data]', data));
+
+  console.log('[errors]', errors);
 
   return (
     <div>
@@ -88,6 +103,27 @@ const ExampleRoute: React.FC<ExampleRouteProps> = () => {
         values={['football', 'basketball', 'cricket', 'volleyball']}
         onChange={sportsSelected}
       />
+      <div className='mt-5 max-w-xs'>
+        <form onSubmit={onSubmit}>
+          <XFControlledTextField
+            control={control}
+            errors={errors}
+            name='example'
+            label='Example TextField'
+            placeholder='Example TextField'
+            rules={{
+              minLength: {
+                value: 6,
+                message: 'Minimum length should be 6',
+              },
+              required: 'Is Required',
+            }}
+          />
+          <div className='mt-3'>
+            <input type='submit' />
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
