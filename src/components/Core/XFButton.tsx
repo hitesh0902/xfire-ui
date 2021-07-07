@@ -4,7 +4,7 @@ import { ButtonVariants } from '../../types';
 
 type ButtonType = 'submit' | 'reset' | 'button';
 
-interface XFButtonProps {
+export interface XFButtonProps {
   children: string;
   variant?: ButtonVariants;
   onClick?: () => void;
@@ -18,14 +18,14 @@ const XFButton: React.FC<XFButtonProps> = ({
   onClick,
 }) => {
   const variantClassMap: { [key in ButtonVariants]: string } = {
-    primary: 'bg-blue-400 hover:bg-blue-500',
-    secondary: 'bg-gray-400 hover:bg-gray-500',
+    primary: 'bg-primary',
+    secondary: 'bg-secondary',
   };
 
   return (
     <button
       className={classNames(
-        'border border-gray-500 p-2 block',
+        'p-2 block rounded hover:opacity-80',
         variantClassMap[variant],
       )}
       onClick={onClick}

@@ -16,14 +16,17 @@ const XFTextField: React.FC<XFTextFieldProps> = ({
   type = 'text',
 }) => {
   return (
-    <div>
-      {label && <label className='mr-2'>{label}</label>}
-      <input
-        placeholder={placeHolder}
-        onChange={onChange && ((e) => onChange(e))}
-        disabled={disabled}
-        type={type}
-      />
+    <div className='space-y-1 w-full'>
+      {label && <label className='inline-block'>{label}</label>}
+      <div className='p-1'>
+        <input
+          placeholder={placeHolder}
+          onChange={onChange && ((e) => onChange(e))}
+          disabled={disabled}
+          type={type}
+          className='appearance-none p-1.5 border border-gray-200 rounded bg-white focus:outline-none focus:ring-2 focus:ring-primary w-full'
+        />
+      </div>
     </div>
   );
 };

@@ -16,18 +16,22 @@ const XFRadioButton: React.FC<XFRadioProps> = ({
 }) => {
   return (
     <div
-      className={classNames('flex', vertical ? 'flex-col' : 'flex-row gap-3')}
+      className={classNames(
+        'flex space-y-1 w-full',
+        vertical ? 'flex-col' : 'flex-row gap-3',
+      )}
     >
       {values.map((value) => (
-        <div className='flex items-center' key={value}>
-          <label className='mr-1'>{value}</label>
+        <div className='flex items-center space-x-2' key={value}>
           <input
             type='radio'
+            className='rounded-full border-none ring-gray-200 focus:outline-none focus:ring-0 h-4 w-4 text-primary'
             id={`${value}`}
             name={groupName}
             value={value}
             onChange={(e) => onChange(e)}
           />
+          <p>{value}</p>
         </div>
       ))}
     </div>

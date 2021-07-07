@@ -24,9 +24,9 @@ const LoginRoute = () => {
 
   return (
     <div className='flex items-center justify-center h-screen w-full'>
-      <div className='p-4 border border-black'>
+      <div className='w-full max-w-xs p-4 border border-black'>
         <h1 className='text-4xl mb-3'>X-Fire Login</h1>
-        <div>
+        <div className='space-y-2'>
           <XFTextField
             placeHolder='Enter your user-id or email-id'
             onChange={(e) => setUserId(e.target.value)}
@@ -41,7 +41,7 @@ const LoginRoute = () => {
           <XFButton onClick={logMeIn}>LOG-IN</XFButton>
         </div>
 
-        <div className='flex justify-center'>
+        <div className='flex justify-center space-x-2'>
           <XFButton onClick={() => history.push('/auth/register')}>
             Register
           </XFButton>

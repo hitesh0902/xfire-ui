@@ -13,9 +13,12 @@ const XFSelectField: React.FC<XFSelectFieldProps> = ({
   onChange,
 }) => {
   return (
-    <div>
+    <div className='space-y-1 w-full'>
       <label>{label}</label>
-      <select onChange={onChange}>
+      <select
+        className='appearance-none p-1.5 border border-gray-200 rounded bg-white focus:outline-none focus:ring-0 w-full'
+        onChange={onChange}
+      >
         {options.map((option) => (
           <option
             key={option.value}
